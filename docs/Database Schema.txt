@@ -1,0 +1,122 @@
+# DATABASE SCHEMA
+
+## CORE ENTITIES
+
+1. User
+2. Budget
+3. Rule_type
+4. Category
+5. Item
+
+
+## RELATIONSHIPS
+
+### User -> Budget
+
+User (1) → Budget (N)
+- One user can own many budgets, but each budget belongs to exactly one user.
+
+
+### Budget -> Category
+
+- A Budget can own many categories, and each category can belong to many budgets.
+
+Note: BudgetCategory Link table required! A Budget allocates money to multiple categories.
+
+
+Budget_Category -> Item
+- One-to-Many: A Budget_Category can own many items.
+
+
+## TABLES
+
+users
+-----
+id (PK)
+email (TEXT, UNIQUE NOT NULL)
+password_hash (TEXT, NOT NULL)
+created_at (TIMESTAMP, NOT NULL)
+updated_at (TIMESTAMP, NOT NULL)
+last_login (TIMESTAMP, NOT NULL)
+
+
+sessions
+-------
+id (PK)
+user_id (FK)
+token
+device
+created_at (TIMESTAMP, NOT NULL)
+expires_at (TIMESTAMP, NOT NULL)
+
+
+budgets
+-----
+id (PK)
+user_id (FK → users.id NOT NULL)
+rule_type_id (FK → rule_types.id NOT NULL)
+year (INTEGER NOT NULL)
+month (INTEGER NOT NULL)
+total_income (DECIMAL NOT NULL CHECK total_income > 0)
+created_at (TIMESTAMP NOT NULL)
+modified_at (TIMESTAMP)
+
+UNIQUE (user_id, rule_type_id, year, month)
+
+
+rule_types
+----------
+id (PK)
+name (UNIQUE NOT NULL)
+needs_percentage (INTEGER NOT NULL)
+wants_percentage (INTEGER NOT NULL)
+savings_percentage (INTEGER NOT NULL)
+
+
+budget_categories
+-----------------
+id (PK)
+budget_id (FK → budgets.id NOT NULL)
+category_id (FK → categories.id NOT NULL)
+allocated_amount (DECIMAL NOT NULL CHECK allocated_amount >= 0)
+
+UNIQUE (budget_id, category_id)
+
+Note: This table stores how much money each category receives in a specific budget.
+
+
+categories
+-----
+id (PK)
+name (TEXT, UNIQUE NOT NULL)
+
+Note: Mini only uses 3 Categories: Needs, Wants and Savings
+
+
+items
+-----
+id (PK)
+budget_category_id (FK → budget_categories.id NOT NULL)
+name (TEXT NOT NULL)
+amount (DECIMAL NOT NULL CHECK amount >= 0)
+
+UNIQUE (budget_category_id, name)
+
+
+## ER DIAGRAM
+
+User (1)
+   │
+   │
+   └───∞ Budget
+            │
+            │
+            └───∞ BudgetCategory
+                       │
+                       │
+                       └───∞ Item
+
+Category (1) ────∞ BudgetCategory
+
+RuleType (1) ────∞ Budget
+

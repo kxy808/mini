@@ -1,0 +1,46 @@
+# Professional Flask Project Structure
+
+```
+mini-backend/
+│
+├── app/
+│   ├── __init__.py
+│   ├── config.py
+│   │
+│   ├── models/
+│   │   ├── user.py
+│   │   ├── budget.py
+│   │   ├── category.py
+│   │   └── item.py
+│   │
+│   ├── routes/
+│   │   ├── auth_routes.py
+│   │   ├── budget_routes.py
+│   │   ├── category_routes.py
+│   │   └── item_routes.py
+│   │
+│   ├── services/
+│   │   ├── auth_service.py
+│   │   ├── budget_service.py
+│   │   └── allocation_service.py
+│   │
+│   ├── schemas/
+│   │   ├── user_schema.py
+│   │   ├── budget_schema.py
+│   │   └── item_schema.py
+│   │
+│   ├── utils/
+│   │   ├── security.py
+│   │   └── validators.py
+│
+├── migrations/
+│
+├── tests/
+│
+├── run.py
+│
+├── requirements.txt
+│
+└── .env
+```
+

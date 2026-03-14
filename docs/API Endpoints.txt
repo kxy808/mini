@@ -1,0 +1,169 @@
+# Mini - API Endpoints Design
+
+Resources:
+
+```
+Users
+Budgets
+Budget Categories
+Items
+Rule Types
+Categories
+```
+
+---
+
+# Authentication
+
+```
+POST /auth/register
+POST /auth/login
+```
+
+---
+
+# Users
+
+```
+GET /users/me
+```
+
+Return the currently logged-in user.
+
+---
+
+# Budgets
+
+## Create budget
+
+```
+POST /budgets
+```
+
+## Get all budgets
+
+```
+GET /budgets
+```
+
+## Get one budget
+
+```
+GET /budgets/{budget_id}
+```
+
+## Update budget
+
+```
+PATCH /budgets/{budget_id}
+```
+
+## Delete budget
+
+```
+DELETE /budgets/{budget_id}
+```
+
+
+# Budget Categories
+
+```
+GET /budgets/{budget_id}/categories
+```
+
+Update category allocation
+
+```
+PATCH /budget-categories/{id}
+```
+
+---
+
+# Items
+
+Create planned item
+
+```
+POST /budget-categories/{id}/items
+```
+
+Get items
+
+```
+GET /budget-categories/{id}/items
+```
+
+Update item
+
+```
+PATCH /items/{id}
+```
+
+Delete item
+
+```
+DELETE /items/{id}
+```
+
+---
+
+# Rule Types
+
+```
+GET /rule-types
+```
+
+Return:
+
+```
+50/30/20
+70/20/10
+```
+
+These are system-defined.
+
+---
+
+# Categories
+
+```
+GET /categories
+```
+
+Returns:
+
+```
+Needs
+Wants
+Savings
+```
+
+---
+
+# Visual Overview
+
+```
+Auth
+ ├ POST /auth/register
+ └ POST /auth/login
+
+Budgets
+ ├ GET /budgets
+ ├ POST /budgets
+ ├ GET /budgets/{id}
+ ├ PATCH /budgets/{id}
+ └ DELETE /budgets/{id}
+
+Budget Categories
+ └ GET /budgets/{id}/categories
+
+Items
+ ├ POST /budget-categories/{id}/items
+ ├ GET /budget-categories/{id}/items
+ ├ PATCH /items/{id}
+ └ DELETE /items/{id}
+```
+
+---
+
+

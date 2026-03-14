@@ -1,0 +1,192 @@
+# Mini - Product Requirements Document
+
+## 1. Product Overview
+
+Mini is a rule-based progressive budgeting web application designed for financially disciplined individuals who value structure and long-term growth. The app automates income allocation using established budgeting frameworks such as the 70-20-10 and 50-30-20 rules, instantly generating balanced budget distributions to reduce manual effort and decision fatigue. After establishing this structured foundation, Mini provides controlled flexibility, allowing users to redistribute funds within their discretionary categories while maintaining a protected minimum savings allocation. By combining automation with intentional constraints, Mini promotes financial consistency without removing user agency.
+
+
+
+## 2. Problem Statement
+
+Many individuals attempting to manage their personal finances struggle to maintain consistent budgeting habits due to perceived complexity, time demands, and uncertainty around allocation methods. Traditional budgeting requires users to independently research frameworks, manually calculate percentage-based distributions, and repeatedly adjust allocations using fragmented tools such as calculators and note-taking applications. This disjointed and calculation-intensive process increases cognitive load and discourages sustained engagement. As a result, budgeting becomes inconsistent or abandoned entirely, limiting individuals’ ability to build savings discipline and long-term financial clarity.
+
+
+
+## 3. Target Audience
+
+### Primary User Profile
+
+Mindset:
+
+    Future-oriented and financially growth-driven
+
+    Values structure and accountability over spontaneity
+
+    Open to operating within disciplined constraints for long-term benefit
+
+Financial Behavior:
+
+    Earns recurring income (salary, freelance, business, etc.)
+
+    Attempts budgeting but struggles with consistency
+
+    Researches financial improvement methods
+
+    Is willing to follow a structured system if it reduces friction
+
+Pain Points:
+
+    Overwhelmed by manual calculations
+
+    Unsure how to distribute income effectively
+
+    Frustrated by tool-switching and lack of automation
+
+    Finds it difficult to maintain savings discipline independently
+
+Goals:
+
+    Build consistent savings habits
+
+    Maintain financial clarity month-to-month
+
+    Balance lifestyle enjoyment with responsible planning
+
+    Reduce mental strain associated with budgeting
+
+Not Designed For:
+
+    Individuals unwilling to operate within structured constraints
+
+    Users seeking unrestricted reallocation of savings funds
+
+    Impulsive spenders looking for maximum flexibility without guardrails
+
+
+
+## 4. Value Proposition
+
+Mini is a rule-driven budgeting system that eliminates manual allocation and guesswork by automatically distributing income through proven financial frameworks. With built-in savings protection and intentional guardrails, it empowers disciplined earners to build consistency without feeling constrained.
+
+
+
+## 5. MVP Features
+
+### 5.1 Authentication System (Module 1)
+
+Purpose: Enable secure account-based budgeting.
+
+Register/Login: Users create accounts to save budgets.
+
+JWT Token Management: Authenticated sessions without resending credentials.
+
+Password Hashing: Secure storage using bcrypt or similar.
+
+
+### 5.2 Budget Engine (Core Logic) (Module 2)
+
+Purpose: Automate structured rule-based allocations.
+
+    Supported Rules: 70-20-10, 50-30-20
+
+    Dynamic Calculations:
+
+        Auto-allocate income across Needs/Wants/Savings
+
+        Maintain savings floor
+
+        Per-item allocation logic
+
+        Controlled Flexibility: Allow reallocation in discretionary categories while protecting savings
+
+
+### 5.3 Budget Item Management (Module 3)
+
+Purpose: Let users manage budget items with real-time feedback.
+
+CRUD Operations: Create, read, update, delete budget items.
+
+Relational Database Design:
+
+User → Budget → Budget Items hierarchy.
+
+One-to-many relationships.
+
+Real-Time Recalculation: Changes in one item update totals automatically.
+
+
+### 5.4 Offline Sync System (Module 4)
+
+Purpose: Ensure Mini works offline and syncs when online.
+
+Local Storage / IndexedDB: Cache user budgets for offline use
+
+Service Workers: Intercept requests and serve cached data
+
+Sync Mechanism: Push local changes to backend when internet resumes
+
+
+### 5.5 Budget Dashboard (Module 5)
+
+Purpose: Provide visual, interactive feedback to users.
+
+Summary View: Income, category breakdown, remaining balances.
+
+Visual Enhancements:
+Tailwind CSS for layout
+Framer Motion for animations
+Responsive design for desktop/mobile
+
+### 5.6 Globalization & Localization (Module 6)
+
+Purpose: Prepare Mini for a worldwide audience.
+
+Currency Formatting: USD, EUR, BWP, etc.
+Decimal Handling: Ensure financial accuracy across locales.
+Time Zones: Correctly handle recurring budgets for users worldwide.
+
+
+
+## 6. Out of Scope (Very Important)
+
+- Bank account integration
+- Expense tracking automation
+- Investment portfolio management
+- Financial goal forecasting
+- Multi-user/shared household budgets
+- Mobile native application
+- AI-driven financial advice
+- Debt repayment optimization modules
+Protects MVP scope and enforces product discipline.
+
+
+## 7. Technical Considerations
+
+Architecture: React frontend, Flask backend, REST API, JWT authentication
+
+Data Storage: PostgreSQL (production), SQLite (development)
+
+Offline Capability: Service workers, local storage, IndexedDB
+
+Security: Password hashing, secure authentication flows
+
+Scalability: Designed for future custom rule creation and recurring budget cycles
+
+Globalization: Handles multiple currencies, decimal accuracy, and time zones
+
+
+## 8. Success Metrics
+
+### Activation Metrics
+- % of users who complete income setup
+- % of users who select a budgeting rule
+
+### Engagement Metrics
+- % of users who save a generated budget
+- Number of budget adjustments per session
+- Month-over-month budget retention rate
+
+### Behavioral Success Metrics (This Is Advanced Thinking)
+- % of users maintaining protected savings allocation after 30 days
+- Reduction in manual reallocation frequency over time
+- 3-month retention rate
