@@ -99,6 +99,20 @@ Purpose: Automate structured rule-based allocations.
 
         Controlled Flexibility: Allow reallocation in discretionary categories while protecting savings
 
+Allocation Engine
+
+Mini generates budgets in three stages:
+
+1️⃣ Rule Allocation
+2️⃣ Initial Item Distribution
+3️⃣ Surplus Redistribution
+
+Example description:
+
+Mini first allocates income to high-level categories using a rule framework (70/20/10 or 50/30/20).
+Within each category, funds are initially distributed evenly across user-defined items.
+Users may then adjust item allocations based on real-world spending patterns. Any resulting surplus can be redistributed within the category while maintaining rule-based constraints and protected savings floors.
+
 
 ### 5.3 Budget Item Management (Module 3)
 

@@ -30,7 +30,9 @@ GET /users/me
 
 Return the currently logged-in user.
 
+
 ---
+
 
 # Budgets
 
@@ -65,19 +67,28 @@ DELETE /budgets/{budget_id}
 ```
 
 
+---
+
+
 # Budget Categories
 
 ```
 GET /budgets/{budget_id}/categories
 ```
 
+```
+GET /budgets/{budget_id}/items
+```
+
 Update category allocation
 
 ```
-PATCH /budget-categories/{id}
+PATCH /budget-categories/{id}/allocated_amount
 ```
 
+
 ---
+
 
 # Items
 
@@ -105,7 +116,9 @@ Delete item
 DELETE /items/{id}
 ```
 
+
 ---
+
 
 # Rule Types
 
@@ -122,7 +135,9 @@ Return:
 
 These are system-defined.
 
+
 ---
+
 
 # Categories
 
@@ -137,6 +152,17 @@ Needs
 Wants
 Savings
 ```
+
+
+# Savings Goals
+
+POST /savings-goals
+GET /savings-goals
+GET /savings-goals/{id}
+PATCH /savings-goals/{id}
+DELETE /savings-goals/{id}
+
+
 
 ---
 
@@ -155,7 +181,9 @@ Budgets
  └ DELETE /budgets/{id}
 
 Budget Categories
- └ GET /budgets/{id}/categories
+ ├ GET /budgets/{id}/categories
+ └ GET /budgets/{id}/items
+
 
 Items
  ├ POST /budget-categories/{id}/items
