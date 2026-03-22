@@ -159,7 +159,14 @@ Currency Formatting: USD, EUR, BWP, etc.
 Decimal Handling: Ensure financial accuracy across locales.
 Time Zones: Correctly handle recurring budgets for users worldwide.
 
+## 5.7 System Constraints (Critical Rules)
 
+- Savings allocation can NEVER be reduced below rule-defined percentage
+- Category totals must ALWAYS equal total_income
+- Item totals must ALWAYS equal category allocation
+- No negative allocations allowed
+- Currency must remain consistent within a budget
+- A user can only have ONE budget per month per rule type
 
 ## 6. Out of Scope (Very Important)
 

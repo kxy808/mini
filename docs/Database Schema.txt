@@ -34,20 +34,20 @@ users
 -----
 id (PK)
 email (TEXT, UNIQUE NOT NULL)
-password_hash (TEXT, NOT NULL)
-created_at (TIMESTAMP, NOT NULL)
-updated_at (TIMESTAMP, NOT NULL)
-last_login (TIMESTAMP, NOT NULL)
+password_hash (TEXT NOT NULL)
+created_at (TIMESTAMP NOT NULL)
+updated_at (TIMESTAMP NOT NULL)
+last_login (TIMESTAMP NOT NULL)
 
 
 sessions
 -------
 id (PK)
 user_id (FK)
-token (TEXT, NOT NULL)
-device (TEXT, NOT NULL)
-created_at (TIMESTAMP, NOT NULL)
-expires_at (TIMESTAMP, NOT NULL)
+token (TEXT NOT NULL)
+device (TEXT NOT NULL)
+created_at (TIMESTAMP NOT NULL)
+expires_at (TIMESTAMP NOT NULL)
 
 
 budgets
@@ -100,8 +100,8 @@ id (PK)
 budget_category_id (FK → budget_categories.id NOT NULL)
 goal_id (FK → savings_goals.id NULL)
 name (TEXT NOT NULL)
-base_amount (DECIMAL NOT NULL CHECK amount >= 0)
-final_amount
+base_amount (DECIMAL NOT NULL CHECK base_amount >= 0)
+final_amount (DECIMAL NOT NULL CHECK final_amount >= 0)
 
 UNIQUE (budget_category_id, name)
 
